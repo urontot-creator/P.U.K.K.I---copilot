@@ -1,0 +1,37 @@
+KEYMAPS:
+q = Electro Dragons
+w = Siege Machine
+Template Match = Heroes (there are 6 heroes. maximum 4 are used during attack. so pukki template matches to see which ones are there. also scan all heroes before deploying to check which ones are available. also ensures no hiccups during deployment)
+u = Rage Spell
+
+DEPLOYMENT FLOW:
+
+***MUST***
+***Camera Normalization (zoom out and lock on top left corner) is set to "c" in keyboard.***
+
+1. Press q to select Electro Dragons.
+2. Deploy 10 Electro Dragons by pressing: 1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+
+3. Press w to select Siege Machine.
+4. Deploy Siege Machine by pressing: 5
+
+5. Template Match Each Heroes. (right after scaning end_battle.png )
+6. Deploy in this order,
+	press "barbarian_king.png" press 5 > press "archer_queen.png" press 4 > press "grand_warden.png" press 6 > press "minion_prince.png" press 5 > press "royal_champion.png" press 7 > press "dragon_duke.png" press 8 (only for dragon duke and archer queen. press their template 0.5 sec  after deploying.) 
+
+
+7. Wait 5 seconds.
+
+8. Press u to select Rage Spell.
+9. Deploy 3 Rage Spells by pressing: i, o, p
+
+16. Wait 8 seconds.
+
+17. Deploy 2 Rage Spells by pressing: [, ]
+
+FULL KEYMAP LIST:
+Deployment Points: 1 2 3 4 5 6 7 8 9 0 I O P [ ]
+Troop/Seige/Spell Selection: Q W R T Y U
+
+
+if something causes issue skip that and proceed. dont stay stuck.

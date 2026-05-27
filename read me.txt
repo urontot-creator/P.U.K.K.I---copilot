@@ -1,0 +1,97 @@
+Preoject name: P.U.K.K.I (automation bot)
+
+setup:
+windows 10, LD player on 720p resolution.
+
+Fucntions:
+LD Player Macro, Python Template Matching, P.U.K.K.I Console (show logs)
+
+Terms:
+scan= python template matching but dont click.
+
+
+1. Home Screen Check.
+
+At launch pukki scans for the "home\builder.png" to recognize home screen.
+
+
+
+2. Wall selection. 
+
+pukki checks walls.json if there are lvl 15 walls available (not 0), he clicks m. if lvl 15 walls are 0, but there are lvl 16 walls available, he clicks n. if lvl 15 and 16 walls are 0, but there are lvl 17 walls available, he clicks b. if lvl 15, 16, and 17 walls are 0, but there are lvl 18 walls available, he clicks v. {m = lvl 15, n = lvl 16, b = lvl 17, v = lvl 18}
+
+if lvl 15, 16, 17, and 18 walls are ALL 0, pukki skips the upgrade phase completely, logs "P.U.K.K.I: Look at that, we're all maxed out!", and proceeds directly to "4. Farm Prep".
+
+after clicking (m,n,b,v) pukki clicks the "builder.png" (for ui reasons)
+
+
+
+3. Wall Upgrade.
+
+case 1: pukki clicks "wallupgrade\goldupgrade.png" > "confirm_upgrade.png". then he selects a new wall with "wall selection" and repeats.
+
+case 2: pukki clicks "wallupgrade\goldupgrade.png" > "confirm_upgrade.png". but "no_gold.png" appears, this means there is not enough gold. so pukki clicks "exit_upgrade_1.png" & "exit_upgrade_2.png". then clicks "elix_upgrade.png" > "confirm_upgrade.png". then he selects a new wall with "wall selection" and repeats.
+
+case 3: pukki clicks "elix_upgrade.png" > "confirm_upgrade.png". but "no_elix.png" appears, this means there is not enough elixir. no gold and no elixir =  Needs to farm. so pukki clicks "exit_upgrade_1.png" & "exit_upgrade_2.png". returns to home screen and prepares to farm.
+
+
+
+4. Farm Prep.
+
+pukki clicks 3 buttons in order to get himself inside a match. 
+
+i. "atk1a.png" or "atk1b.png" or "atk1c.png" or "atk1d.png" (it changes so whichever is there)
+ii. "atk2.png"
+iii. "atk3.png"
+
+***then scan for "atk\end_battle.png". finding this mean we successfully entered a match.***
+***if "atk\end_battle.png" doesnt appear within 40s.  click "cancel_search" to return to home screen and start from "Farm Prep" again.
+
+
+
+5. Deployment.
+
+explained in detail on deployment.txt
+
+
+
+6. Return Home.
+
+there are 2 cases here.
+
+case 1: after deployment keep scanning every 5 sec for "atk\return_home.png". when it appears click it to go back to home screen (scan "builder.png").
+
+case 2: right from the first electro dragon deployment, start a 90 second timer. after the timer click,
+i. "end_battle.png" or "surrender.png" (whichever one is there)
+ii. "surrender_okay.png"
+
+***if case 1 completes within 90 seconds. dismiss case 2***
+
+7. Console.
+
+the console is the gui of pukki. its simple and only 300px wide. it has
+
+i. a single togglable button on top. the toggles between start and pause (toggle hotkey = ctrl+p).
+
+***when Ctrl+P is pressed, the Python script instantly releases mouse control, breaks out of the current function loop, and alters the GUI state to "Paused".***
+
+ii. a vertical chatbox. pukki shows logs here with timestamp (hh:mm). Since the mouse will be used for automation. the console will auto scroll and view the latest logs. he wont log everything, just major actions. keep the theme dark,minimal,modern.
+
+He logs in the style of chat. 
+	like- "P.U.K.K.I: Crap!! We ran out of loot."
+
+he has a personality. his responses suggests- he is silly but very capable.
+
+***if something goes wrong, pukki will drop his personality and give the technical log***
+
+
+
+***Special***
+1. when pukki confirms there are no gold or elixir left for wall upgrade. he starts a 10 attack sequence. during this sequence he wont try to upgrade walls. he will upgrade walls again after the 10th attack.
+
+2. Error handling. Pukki passively scans for Unwanted Popups every 20 seconds. he checks if anything appears on his screen that matches templates in "unwantedpopups/errors". If it does, he dismisses it by clicking templates from "unwantedpopups/solutions"
+
+***if an error popup is detected and resolved, P.U.K.K.I forces a sub-routine reset back to the Home Screen (home\builder.png) to safely recalibrate his loop state.***
+
+
+for example- if "error_1.png" appears, pukki clicks "solution_1.png". the number in the error's name corresponds to the number in solution's name.
